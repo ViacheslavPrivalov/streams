@@ -5,10 +5,14 @@ import java.util.Objects;
 public class Employee {
     private String firstName;
     private String lastName;
+    private Integer departmentId;
+    private Double salary;
 
-    public Employee(String firstName, String lastName) {
+    public Employee(String firstName, String lastName, int departmentId, double salary) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.departmentId = departmentId;
+        this.salary = salary;
     }
 
     public String getFirstName() {
@@ -19,7 +23,15 @@ public class Employee {
         return lastName;
     }
 
-    public String getFullName() {return firstName + " " + lastName; }
+
+    public Integer getDepartmentId() {
+        return departmentId;
+    }
+
+    public Double getSalary() {
+        return salary;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -38,6 +50,8 @@ public class Employee {
         return "Employee{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", departmentId=" + departmentId +
+                ", salary=" + salary +
                 '}';
     }
 }

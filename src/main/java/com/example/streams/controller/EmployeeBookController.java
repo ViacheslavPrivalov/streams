@@ -19,8 +19,11 @@ public class EmployeeBookController {
     }
 
     @GetMapping("/add")
-    public Employee addEmployee(@RequestParam String firstName, @RequestParam String lastName) {
-        return employeeBookService.addEmployee(firstName, lastName);
+    public Employee addEmployee(@RequestParam String firstName,
+                                @RequestParam String lastName,
+                                @RequestParam Integer departmentId,
+                                @RequestParam Double salary) {
+        return employeeBookService.addEmployee(firstName, lastName, departmentId, salary);
     }
 
     @GetMapping("/remove")
