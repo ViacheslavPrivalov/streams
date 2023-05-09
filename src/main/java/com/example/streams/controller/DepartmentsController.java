@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/departments")
@@ -28,9 +30,14 @@ public class DepartmentsController {
         return employeeBookService.minSalary(departmentId);
     }
 
-    @GetMapping("/all")
-    public Collection<Employee> printEmployeesByDepartment(@RequestParam(required = false) Integer departmentId) {
+    @GetMapping(value = "/all", params = "departmentId")
+    public Collection<Employee> printEmployeesByDepartment(@RequestParam Integer departmentId) {
         return employeeBookService.printEmployeesByDepartment(departmentId);
+    }
+
+    @GetMapping("/all")
+    public Map<Integer, List<Employee>> printEmployees() {
+        return employeeBookService.printEmployees();
     }
 
 }

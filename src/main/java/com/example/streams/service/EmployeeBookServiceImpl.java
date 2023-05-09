@@ -77,10 +77,24 @@ public class EmployeeBookServiceImpl implements EmployeeBookService {
     }
 
     @Override
-    public Map<Integer, Employee> printEmployeesByDepartment() {
-        Map<Integer, Employee> employeeMap = new HashMap<>();
+    public Map<Integer, List<Employee>> printEmployees() {
+        Map<Integer, List<Employee>> employeeMap = new HashMap<>();
+        Set<Integer> departmentsSet = new HashSet<>();
         for (Employee value : mapEmployeeBook.values()) {
-            employeeMap.put(value.getDepartmentId(), value);
+            departmentsSet.add(value.getDepartmentId());
+        }
+        List<Integer> departmentsList = new ArrayList<>();
+        for (Integer integer : departmentsSet) {
+            departmentsList.add(integer);
+        }
+        for (Employee value : mapEmployeeBook.values()) {
+            for (int i = 0; i < departmentsList.size(); i++) {
+                if (value.getDepartmentId().equals(departmentsList.get(i))) {
+                    List<Employee> list = new ArrayList<>();
+                    list.add(value);
+                    employeeMap.put(departmentsList.get(i), list);
+                }
+            }
         }
         return employeeMap;
     }
