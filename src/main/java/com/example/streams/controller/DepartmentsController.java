@@ -29,11 +29,8 @@ public class DepartmentsController {
     }
 
     @GetMapping("/all")
-    public Collection<Employee> printEmployeesByDepartment(@RequestParam Integer departmentId) {
+    public Collection<Employee> printEmployeesByDepartment(@RequestParam(required = false) Integer departmentId) {
         return employeeBookService.printEmployeesByDepartment(departmentId);
     }
-    @GetMapping("/allEmployees")
-    public Collection<Employee> printEmployees() {
-        return employeeBookService.printEmployees();
-    }
+
 }

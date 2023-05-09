@@ -3,6 +3,7 @@ package com.example.streams.service;
 import com.example.streams.model.Employee;
 
 import java.util.Collection;
+import java.util.Map;
 
 public interface EmployeeBookService {
 
@@ -20,6 +21,6 @@ public interface EmployeeBookService {
 
     Collection<Employee> printEmployeesByDepartment(Integer departmentId);
 
-    Collection<Employee> printEmployees();
+    Map<Integer, Employee> printEmployeesByDepartment();
 
 }

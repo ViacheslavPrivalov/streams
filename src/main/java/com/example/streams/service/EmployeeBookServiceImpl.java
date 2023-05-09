@@ -77,9 +77,11 @@ public class EmployeeBookServiceImpl implements EmployeeBookService {
     }
 
     @Override
-    public Collection printEmployees() {
-        Map<Integer, Employee> employeeMap = mapEmployeeBook.values().stream()
-                .collect(Collectors.toMap(employee -> employee.getDepartmentId(), value -> value));
-        return Collections.unmodifiableCollection(employeeMap.entrySet());
+    public Map<Integer, Employee> printEmployeesByDepartment() {
+        Map<Integer, Employee> employeeMap = new HashMap<>();
+        for (Employee value : mapEmployeeBook.values()) {
+            employeeMap.put(value.getDepartmentId(), value);
+        }
+        return employeeMap;
     }
 }
